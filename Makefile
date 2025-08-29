@@ -3,7 +3,7 @@
 # Run backend and frontend together
 dev:
 	@echo "🚀 Starting backend (FastAPI) and frontend (Next.js)..."
-	(cd backend && uvicorn app.main:app --reload --port 8000) &
+	(cd backend && fastapi dev) &
 	(cd frontend && npm run dev) &
 	wait
 
