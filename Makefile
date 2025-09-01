@@ -4,8 +4,8 @@
 dev:
 	@echo "🚀 Starting backend (FastAPI) and frontend (Next.js)..."
 	(cd backend && fastapi dev) &
-	(cd frontend && npm run dev) &
-	wait
+	(cd frontend && pnpm run dev)
+# 	wait
 
 # Run only backend
 backend:
