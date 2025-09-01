@@ -1,6 +1,8 @@
 [submodule "backend"]
 	path = backend
 	url = https://github.com/vickvey/tabasco-fastapi.git
+	branch = main
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/vickvey/tabasco-frontend.git
+	branch = main
