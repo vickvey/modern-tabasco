@@ -6,12 +6,32 @@ APP_DIR="modern-tabasco"
 FRONTEND_PORT=3000
 BACKEND_PORT=8000
 
+# ---------------- BANNER ----------------
+print_banner() {
+BOLD="\033[1m"
+RESET="\033[0m"
+
+echo -e "${BOLD}==============================="
+echo -e "  modern-tabasco (BETA version)"
+echo -e "  Author: Vivek Kumar"
+echo -e "  GitHub: https://github.com/vickvey"
+echo -e "===============================${RESET}"
+echo ""
+}
+
+
+
+print_banner
+
 # ---------------- UTILS ----------------
-check_port() {
+check_and_kill_port() {
   local port=$1
   if lsof -i :"$port" &> /dev/null; then
-    echo "❌ Port $port is already in use. Please free it before running this script."
-    exit 1
+    echo "⚠️ Port $port is already in use. Killing existing process..."
+    PIDS=$(lsof -ti :"$port")
+    echo "🔹 Killing PID(s): $PIDS"
+    kill -9 $PIDS
+    sleep 1
   fi
 }
 
@@ -43,7 +63,6 @@ check_node() {
   else
     echo "⚠️ Node.js not found. Installing via nvm..."
   fi
-  # Install NVM if missing
   if [ ! -d "$HOME/.nvm" ]; then
     echo "📥 Installing nvm..."
     curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
@@ -69,17 +88,22 @@ check_pnpm() {
 check_python
 check_node
 check_pnpm
-check_port $BACKEND_PORT
-check_port $FRONTEND_PORT
+check_and_kill_port $BACKEND_PORT
+check_and_kill_port $FRONTEND_PORT
 
 # ---------------- CLONE REPO ----------------
-echo "🚀 Cloning modern-tabasco..."
-if [ -d "$APP_DIR" ]; then
-  echo "⚠️ Directory $APP_DIR already exists. Skipping clone."
+if [ -f "run-local.sh" ]; then
+  echo "⚠️ Detected you are already inside modern-tabasco repo. Skipping clone."
 else
-  git clone --recurse-submodules "$REPO_URL"
+  if [ -d "$APP_DIR" ]; then
+    echo "⚠️ Directory $APP_DIR already exists. Using existing repo."
+  else
+    echo "🚀 Cloning modern-tabasco..."
+    git clone --recurse-submodules "$REPO_URL"
+  fi
+  cd "$APP_DIR"
 fi
-cd "$APP_DIR"
+
 git submodule update --init --recursive
 
 # ---------------- BACKEND ----------------

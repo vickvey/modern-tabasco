@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: >
+  If you use this software, please cite both the original TABASCO paper and this
+  re-engineered Modern TABASCO implementation.
+
+title: "Modern TABASCO"
+version: "0.1.0-beta"
+date-released: 2025-09-27
+url: "https://github.com/vickvey/modern-tabasco"
+
+authors:
+  - family-names: "Kumar"
+    given-names: "Vivek"
+    # orcid: "https://orcid.org/…"  # optional
+
+preferred-citation:
+  type: software
+  title: "Modern TABASCO (BETA)"
+  version: "0.1.0-beta"
+  authors:
+    - family-names: "Kumar"
+      given-names: "Vivek"
+  url: "https://github.com/vickvey/modern-tabasco"
+
+references:
+  - type: article
+    title: "TABASCO: A transformer based contextualization toolkit"
+    authors:
+      - family-names: "Moharil"
+        given-names: "A."
+      - family-names: "Sharma"
+        given-names: "Arpit"
+    year: 2023
+    doi: "10.1016/j.scico.2023.102994"
+    url: "https://doi.org/10.1016/j.scico.2023.102994"
