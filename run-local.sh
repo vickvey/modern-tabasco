@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-REPO_URL="https://github.com/your-username/modern-tabasco.git"
+REPO_URL="https://github.com/vickvey/modern-tabasco.git"
 APP_DIR="modern-tabasco"
 FRONTEND_PORT=3000
 BACKEND_PORT=8000
