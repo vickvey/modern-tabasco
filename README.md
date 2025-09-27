@@ -64,6 +64,23 @@ Once running:
 
 ---
 
+## 📂 Repository Structure
+
+Modern TABASCO is split into three repositories:
+
+- **[modern-tabasco](https://github.com/vickvey/modern-tabasco)**
+  The main entry point. Contains documentation, orchestration scripts (`run-local.sh`), and links the frontend and backend as submodules.
+
+- **[tabasco-frontend](https://github.com/vickvey/tabasco-frontend)**
+  The **Next.js + React (TypeScript, shadcn/ui)** web interface.
+  ⚠️ Cannot be run standalone. Use through the main repo.
+
+- **[tabasco-backend](https://github.com/vickvey/tabasco-backend)**
+  The **FastAPI + Python (uv)** API for ambiguity detection and word sense disambiguation.
+  ⚠️ Cannot be run standalone. Use through the main repo.
+
+---
+
 ## 📖 Credits / Acknowledgements
 
 - Original **TABASCO v1.1** (2022) by [a-moharil](https://github.com/a-moharil), under the MIT License.
